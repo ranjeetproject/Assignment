@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { API_END_POINT } from "../../constants/constants";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 const List = () => {
+  const navigate = useNavigate();
   const [listData, setListData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,6 +27,15 @@ const List = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
+    <>
+    <div
+      className="container"
+      style={{
+        display: "flex",
+      }}
+    >
+    <button className="btn btn-danger" onClick={()=>navigate(-1)}>Back</button>
+    </div>
     <div
       className="container"
       style={{
@@ -54,6 +65,7 @@ const List = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 
